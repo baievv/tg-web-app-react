@@ -12,7 +12,7 @@ function App() {
 
    return (
     <div className="App">
-      <button onClick={onToggleButton}>toggle</button>
+      <button onClick={onToggleButton}>{`${tg.mainButton.inVisible}`}</button>
     </div>
   );
 }

@@ -7,13 +7,10 @@ export function useTelegram() {
   };
 
   const onToggleButton = () => {
-    alert(tg.MainButton.inVisible);
     if (tg.MainButton.inVisible) {
       tg.MainButton.hide();
-      alert("Спрятать");
     } else {
       tg.MainButton.show();
-      alert("Показать");
     }
   };
   return {
