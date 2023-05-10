@@ -6,10 +6,13 @@ export function useTelegram() {
   };
 
   const onToggleButton = () => {
+    console.log(tg.MainButton.inVisible);
     if (tg.MainButton.inVisible) {
       tg.MainButton.hide();
+      console.log("Спрятать");
     } else {
       tg.MainButton.show();
+      console.log("Показать");
     }
   };
   return {
