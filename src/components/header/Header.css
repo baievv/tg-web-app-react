@@ -7,5 +7,6 @@
 }
 
 .username {
-  margin-left: auto;
+  display:block;
+  margin-left: 20px;
 }
