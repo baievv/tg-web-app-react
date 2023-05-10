@@ -9,6 +9,6 @@
 .username {
   display:block;
   margin-left: 20px;
-  color: black;
+  /* color: black; */
   height: 50px;
 }
