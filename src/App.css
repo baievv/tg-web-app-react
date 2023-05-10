@@ -9,6 +9,6 @@ body {
   color: var(--tg-theme-bg-color);
 }
 
-button {
+.toggleButton {
  margin-left: 20px;
 }
