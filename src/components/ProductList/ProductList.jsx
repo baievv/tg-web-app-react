@@ -10,48 +10,42 @@ const products = [
     title: "Джинсы",
     price: 5000,
     description: "Синего цвета, прямые",
+    imgUrl: "/img/1.png",
   },
   {
     id: "2",
     title: "Куртка",
     price: 12000,
     description: "Зеленого цвета, теплая",
+    imgUrl: "/img/2.png",
   },
   {
     id: "3",
     title: "Джинсы 2",
     price: 5000,
     description: "Синего цвета, прямые",
+    imgUrl: "/img/3.png",
   },
   {
     id: "4",
     title: "Куртка 8",
     price: 122,
     description: "Зеленого цвета, теплая",
+    imgUrl: "/img/4.png",
   },
   {
     id: "5",
     title: "Джинсы 3",
     price: 5000,
     description: "Синего цвета, прямые",
+    imgUrl: "/img/5.png",
   },
   {
     id: "6",
     title: "Куртка 7",
     price: 600,
     description: "Зеленого цвета, теплая",
-  },
-  {
-    id: "7",
-    title: "Джинсы 4",
-    price: 5500,
-    description: "Синего цвета, прямые",
-  },
-  {
-    id: "8",
-    title: "Куртка 5",
-    price: 12000,
-    description: "Зеленого цвета, теплая",
+    imgUrl: "/img/6.png",
   },
 ];
 
@@ -71,7 +65,7 @@ const ProductList = () => {
       totalPrice: getTotalPrice(addedItems),
       queryId,
     };
-    fetch("http://85.119.146.179:8000/web-data", {
+    fetch("http://localhoast:3000/web-data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
