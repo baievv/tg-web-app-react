@@ -12,3 +12,6 @@ body {
 .toggleButton {
  margin-left: 20px;
 }
+.header {
+  display: none;
+}
