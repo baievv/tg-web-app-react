@@ -37,28 +37,80 @@ const Dashboard = () => {
 				{/* Визуал дашборда */}
 				<div className='dashboard'>
 					<div className='dashboard_items'>
-						<div className='dashboard_items_in'>sdfsdf</div>
+						<div className='dashboard_items_in'>
+							<div className='item_icon'>
+								<img
+									src='/img/dashboard/icons/closed_lock.png'
+									alt=''
+								/>
+							</div>
+							<div className='item_title'>Door</div>
+							<div className='item_subtitle'>Lock is closed</div>
+						</div>
 					</div>
 					<div className='dashboard_items'>
-						<div className='dashboard_items_in'>sdfsdf</div>
+						<div className='dashboard_items_in'>
+							<div className='item_icon'>
+								<img
+									src='/img/dashboard/icons/thermometer_.png'
+									alt=''
+								/>
+							</div>
+							<div className='item_title'>Temperature</div>
+							<div className='item_subtitle'>Lock is closed</div>
+						</div>
 					</div>
 					<div className='dashboard_items'>
-						<div className='dashboard_items_in'>sdfsdf</div>
+						<div className='dashboard_items_in'>
+							<div className='item_icon'>
+								<img
+									src='/img/dashboard/icons/television_.png'
+									alt=''
+								/>
+							</div>
+							<div className='item_title'>TV</div>
+							<div className='item_subtitle'>Lock is closed</div>
+						</div>
 					</div>
 					<div className='dashboard_items'>
-						<div className='dashboard_items_in'>sdfsdf</div>
+						<div className='dashboard_items_in'>
+							<div className='item_icon'>
+								<img
+									src='/img/dashboard/icons/dimmer_.png'
+									alt=''
+								/>
+							</div>
+							<div className='item_title'>Main light</div>
+							<div className='item_subtitle'>Off</div>
+						</div>
 					</div>
 					<div className='dashboard_items'>
-						<div className='dashboard_items_in'>sdfsdf</div>
+						<div className='dashboard_items_in'>
+							<div className='item_icon'>
+								<img
+									src='/img/dashboard/icons/air-conditioner.png'
+									alt=''
+								/>
+							</div>
+							<div className='item_title'>Air conditioner</div>
+							<div className='item_subtitle'>On</div>
+						</div>
 					</div>
 					<div className='dashboard_items'>
-						<div className='dashboard_items_in'>sdfsdf</div>
+						<div className='dashboard_items_in'>
+							<div className='item_icon'>
+								<img
+									src='/img/dashboard/icons/floor_lamp_.png'
+									alt=''
+								/>
+							</div>
+							<div className='item_title'>Floor lamp</div>
+							<div className='item_subtitle'>Off</div>
+						</div>
 					</div>
 				</div>
 				{/* ------------------------- */}
-        <div className="footer">
-          
-        </div>
+				<div className='footer'></div>
 			</div>
 		</>
 	);
