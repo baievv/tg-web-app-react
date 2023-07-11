@@ -133,21 +133,34 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+  right: 0;
+  bottom: 0;
 	padding: 15px;
   width: 100%;
+  display:flex ;
+  flex-direction: column;
 }
 
 .item_icon img {
 	width: 40%;
-	height: 40%;
+	height: auto;
 }
-
+.item_icon{
+  display: block;
+  margin-bottom: auto;
+}
 .item_title{
   font-size: 22px;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   color: rgba(255,255,255,.5);
 }
 
 .item_subtitle{
 font-size: 12px;
+}
+
+@media screen and(max-width:500px){
+    .item_title{
+      font-size: 18px;
+    }
 }
