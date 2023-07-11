@@ -92,7 +92,7 @@ const Dashboard = () => {
 									alt=''
 								/>
 							</div>
-							<div className='item_title'>Air conditioner</div>
+							<div className='item_title'>Conditioner</div>
 							<div className='item_subtitle'>On</div>
 						</div>
 					</div>
@@ -110,7 +110,11 @@ const Dashboard = () => {
 					</div>
 				</div>
 				{/* ------------------------- */}
-				<div className='footer'></div>
+				<div className='footer'>
+					Width is
+					{window.innerWidth}, Height is
+					{window.innerHeight}
+				</div>
 			</div>
 		</>
 	);
