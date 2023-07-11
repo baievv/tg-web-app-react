@@ -1,0 +1,135 @@
+.container {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	font-family: "Jost", sans-serif;
+}
+.view {
+	width: auto;
+	min-height: 35vh;
+	background: url("../../../public/img/dashboard/view_apartmentlow.jpg")
+		no-repeat;
+	background-position: left bottom;
+	background-size: cover;
+	background-color: rgba(10, 1, 1, 0.837);
+	margin: 0;
+	display: flex;
+	flex-direction: column-reverse;
+	padding: 10px 30px;
+	position: relative;
+	z-index: 1;
+}
+.view:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 2;
+	background: linear-gradient(
+		to right,
+		rgba(22, 22, 24, 0.701) 0%,
+		rgba(13, 13, 14, 0.85) 100%
+	);
+}
+.view_items {
+	position: absolute;
+	z-index: 3;
+	display: flex;
+	flex-direction: column;
+}
+.view_info {
+	margin-top: auto;
+	font-size: 18px;
+	color: white;
+	position: relative;
+	z-index: 3;
+	margin-bottom: 10px;
+	padding-left: 5px;
+}
+
+.view_info:hover {
+	color: rgb(25, 220, 255);
+}
+.view_info:after {
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+	content: "";
+	width: 100%;
+	height: 1px;
+	background-color: rgba(1, 34, 167, 0.733);
+	z-index: 4;
+}
+.view_data {
+	display: flex;
+	flex-direction: row;
+	font-size: 12px;
+	color: white;
+}
+.view_data_items {
+	display: flex;
+}
+
+.view_data_items img {
+	width: 15px;
+	height: 15px;
+}
+.view_data_items span {
+	margin-left: 5px;
+	margin-right: 10px;
+}
+
+.dashboard {
+	width: 100%;
+	background-color: rgb(12, 1, 44);
+	padding: 10px 0 0 10px;
+	display: flex;
+	justify-content: space-between;
+	align-content: space-between;
+	flex-wrap: wrap;
+}
+.dashboard_items {
+	/* width: 30%; */
+	width: calc(
+		33.33% - 10px
+	); /* Ширина квадрата (33.33% для трех квадратов) */
+	height: calc(
+		33.33% - 10px
+	); /* Высота квадрата (33.33% для трех квадратов) */
+	margin-bottom: 10px; /* Расстояние между квадратами по вертикали */
+	margin-right: 10px;
+	background-color: rgb(9, 1, 54);
+	border: 1px rgba(0, 0, 0, 0.459) solid;
+	border-radius: 20px;
+position: relative;
+}
+.dashboard_items::before {
+	content: "";
+	display: block;
+	padding-top: 100%;
+	border-radius: 20px;
+	top: 0;
+	left: 0;
+}
+.dashboard_items:hover::before {
+	color: aqua;
+	box-shadow: 0 0 15px 6px rgba(215, 223, 255, 0.895);
+	animation: shadow 3s infinite alternate-reverse;
+}
+.dashboard_items_in{
+  color: azure;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding:15px;
+}
+@keyframes shadow {
+	from {
+		box-shadow: 0 0 15px 4px rgba(11, 43, 173, 0.397);
+	}
+	to {
+		box-shadow: 0 0 25px 8px rgba(9, 32, 123, 0.397);
+	}
+}
