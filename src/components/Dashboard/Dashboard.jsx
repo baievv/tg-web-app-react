@@ -34,6 +34,7 @@ const Dashboard = () => {
 						</div>
 					</div>
 				</div>
+				{/* Визуал дашборда */}
 				<div className='dashboard'>
 					<div className='dashboard_items'>
 						<div className='dashboard_items_in'>sdfsdf</div>
@@ -47,7 +48,17 @@ const Dashboard = () => {
 					<div className='dashboard_items'>
 						<div className='dashboard_items_in'>sdfsdf</div>
 					</div>
+					<div className='dashboard_items'>
+						<div className='dashboard_items_in'>sdfsdf</div>
+					</div>
+					<div className='dashboard_items'>
+						<div className='dashboard_items_in'>sdfsdf</div>
+					</div>
 				</div>
+				{/* ------------------------- */}
+        <div className="footer">
+          
+        </div>
 			</div>
 		</>
 	);
