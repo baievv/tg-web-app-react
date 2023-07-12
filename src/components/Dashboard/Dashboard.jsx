@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Dashboard.css";
-import { Switch, message } from "antd";
+import { message } from "antd";
+import {
+	requestLockStatus,
+	openLock,
+	closeLock,
+} from "../../utils/lock-server";
+const date = Date.now();
+const clientId = "329721a18c01487ebe8c4f6ed920c4db";
+const lockId = "9166406";
+const accessToken = "cfbfd3e45cb1b35077f41756b8a6f448";
 
 const Dashboard = () => {
 	const { id } = useParams();
@@ -25,6 +34,9 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		console.log("Id =", id);
+		const response = requestLockStatus(Date.now(), clientId, accessToken);
+		// startRequest();
+		// console.log(response);
 	}, []);
 
 	return (
