@@ -6,18 +6,21 @@ import { Switch, message } from "antd";
 const Dashboard = () => {
 	const { id } = useParams();
 	const [messageApi, contextHolder] = message.useMessage();
-	const [checked, setChecked] = useState(true);
+	const [checked, setChecked] = useState({
+		isOpen: true,
+		fileName: "closed",
+		status: "closed",
+	});
 
 	const onSwitch = () => {
-		console.log("checked is", checked);
-		if (checked === true) {
-			setChecked(false);
+		console.log("checked is", checked.isOpen);
+		if (checked.isOpen === true) {
+			setChecked({ isOpen: false, fileName: "closed", status: "closed" });
 			messageApi.info("Lock is close", [1]);
 		} else {
-			setChecked(true);
+			setChecked({ isOpen: true, fileName: "opened", status: "open" });
 			messageApi.info("Lock is open", [1]);
 		}
-		// messageApi.info("Lock is close", [1]);
 	};
 
 	useEffect(() => {
@@ -56,12 +59,14 @@ const Dashboard = () => {
 						<div className='dashboard_items_in'>
 							<div className='item_icon'>
 								<img
-									src='/img/dashboard/icons/closed_lock.png'
+									src={`/img/dashboard/icons/${checked.fileName}_lock.png`}
 									alt=''
 								/>
 							</div>
 							<div className='item_title'>Door</div>
-							<div className='item_subtitle'>Lock is closed</div>
+							<div className='item_subtitle'>
+								Lock is {checked.status}
+							</div>
 						</div>
 					</div>
 					<div className='dashboard_items'>
@@ -73,7 +78,7 @@ const Dashboard = () => {
 								/>
 							</div>
 							<div className='item_title'>Temperature</div>
-							<div className='item_subtitle'>Lock is closed</div>
+							<div className='item_subtitle'>Inside</div>
 						</div>
 					</div>
 					<div className='dashboard_items'>
@@ -85,7 +90,7 @@ const Dashboard = () => {
 								/>
 							</div>
 							<div className='item_title'>TV</div>
-							<div className='item_subtitle'>Lock is closed</div>
+							<div className='item_subtitle'>Off</div>
 						</div>
 					</div>
 					<div className='dashboard_items'>
