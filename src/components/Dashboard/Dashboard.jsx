@@ -1,9 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Dashboard.css";
+import { Switch, message } from "antd";
 
 const Dashboard = () => {
 	const { id } = useParams();
+	const [messageApi, contextHolder] = message.useMessage();
+	const [checked, setChecked] = useState(true);
+
+	const onSwitch = () => {
+		console.log("checked is", checked);
+		if (checked === true) {
+			setChecked(false);
+			messageApi.info("Lock is close", [1]);
+		} else {
+			setChecked(true);
+			messageApi.info("Lock is open", [1]);
+		}
+		// messageApi.info("Lock is close", [1]);
+	};
 
 	useEffect(() => {
 		console.log("Id =", id);
@@ -11,6 +26,7 @@ const Dashboard = () => {
 
 	return (
 		<>
+			{contextHolder}
 			<div className='container'>
 				<div className='view'>
 					<div className='view_items'>
@@ -36,7 +52,7 @@ const Dashboard = () => {
 				</div>
 				{/* Визуал дашборда */}
 				<div className='dashboard'>
-					<div className='dashboard_items'>
+					<div className='dashboard_items' onClick={onSwitch}>
 						<div className='dashboard_items_in'>
 							<div className='item_icon'>
 								<img
