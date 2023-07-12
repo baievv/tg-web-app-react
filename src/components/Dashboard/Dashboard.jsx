@@ -34,7 +34,7 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		console.log("Id =", id);
-		const response = requestLockStatus(Date.now(), clientId, accessToken);
+		// const response = requestLockStatus(Date.now(), clientId, accessToken);
 		// startRequest();
 		// console.log(response);
 	}, []);
