@@ -66,7 +66,7 @@ async function openLock(clientId, accessToken, lockId, date) {
 		});
 }
 async function getTest(){
-	const url="http://localhost:5000/dashboard/2222";
+	const url = "http://49.13.63.34:5000/dashboard/2222";
 	try {
 		const response = await fetch(url);
 		console.log(response);
