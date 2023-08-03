@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import "./Dashboard.css";
 import { message } from "antd";
 import {
-	requestLockStatus,
+	requestLockStatus,getTest,
 	openLock,
 	closeLock,
 } from "../../utils/lock-server";
@@ -34,7 +34,8 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		console.log("Id =", id);
-		 const response = requestLockStatus(Date.now(), clientId, accessToken);
+		//  const response = requestLockStatus(Date.now(), clientId, accessToken);
+		const response=getTest();
 		// startRequest();
 		 console.log(response);
 	}, []);

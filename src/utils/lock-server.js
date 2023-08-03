@@ -65,7 +65,23 @@ async function openLock(clientId, accessToken, lockId, date) {
 			return error;
 		});
 }
+async function getTest(){
+	const url="http://localhost:5000/dashboard/2222";
+	try {
+		const response = await fetch(url);
+		console.log(response);
 
+		if (response.ok) {
+			const data = await response.json();
+			console.log("Data is -",data);
+			return data;
+		} else {
+			throw new Error("Ошибка при выполнении запроса");
+		}
+	} catch (error) {
+		return error;
+	}
+}
 async function closeLock(clientId, accessToken, lockId, date) {
 	const url = "https://euapi.ttlock.com/v3/lock/lock";
 	const data = new URLSearchParams();
@@ -103,4 +119,4 @@ async function closeLock(clientId, accessToken, lockId, date) {
 // openLock(clientId, accessToken, lockId, date);
 // closeLock(clientId, accessToken, lockId, date);
 
-export { requestLockStatus, openLock, closeLock };
+export { requestLockStatus, openLock, closeLock ,getTest};
