@@ -70,13 +70,12 @@ async function getTest(){
 	try {
 		const response = await fetch(url);
 		console.log(response);
-
 		if (response.ok) {
 			const data = await response.json();
 			console.log("Data is -",data);
 			return data;
 		} else {
-			throw new Error("Ошибка при выполнении запроса");
+			throw new Error("Request error");
 		}
 	} catch (error) {
 		return error;
