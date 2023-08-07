@@ -65,11 +65,10 @@ async function openLock(clientId, accessToken, lockId, date) {
 			return error;
 		});
 }
-async function getTest(){
-	const url = "http://49.13.63.34:5000/dashboard/2222";
+async function getTest(command){
+	const url = `http://49.13.63.34:5000/dashboard/batumi/lock/${command}`;
 	try {
 		const response = await fetch(url);
-		console.log(response);
 		if (response.ok) {
 			const data = await response.json();
 			console.log("Data is -",data);

@@ -15,18 +15,22 @@ const accessToken = "cfbfd3e45cb1b35077f41756b8a6f448";
 const Dashboard = () => {
 	const { id } = useParams();
 	const [messageApi, contextHolder] = message.useMessage();
+	const [lockResponse,setLockResponse]=useState(null);
 	const [checked, setChecked] = useState({
 		isOpen: true,
 		fileName: "closed",
 		status: "closed",
 	});
 
-	const onSwitch = () => {
-		console.log("checked is", checked.isOpen);
+	const onSwitch = async () => {
 		if (checked.isOpen === true) {
 			setChecked({ isOpen: false, fileName: "closed", status: "closed" });
+			let res=await getTest('switch');
+			setLockResponse(res.status);
 			messageApi.info("Lock is close", [1]);
 		} else {
+			let res=await getTest("switch");
+			setLockResponse(res.status);
 			setChecked({ isOpen: true, fileName: "opened", status: "open" });
 			messageApi.info("Lock is open", [1]);
 		}
@@ -34,10 +38,6 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		console.log("Id =", id);
-		//  const response = requestLockStatus(Date.now(), clientId, accessToken);
-		const response=getTest();
-		// startRequest();
-		 console.log(response);
 	}, []);
 
 	return (
@@ -145,9 +145,8 @@ const Dashboard = () => {
 				</div>
 				{/* ------------------------- */}
 				<div className='footer'>
-					Width is
-					{window.innerWidth}, Height is
-					{window.innerHeight}
+					Response is 
+					{lockResponse}
 				</div>
 			</div>
 		</>
