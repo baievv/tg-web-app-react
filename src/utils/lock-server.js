@@ -66,7 +66,7 @@ async function openLock(clientId, accessToken, lockId, date) {
 		});
 }
 async function getTest(command){
-	const url = `http://49.13.63.34:5000/dashboard/batumi/lock/${command}`;
+	const url = `https://49.13.63.34:5000/dashboard/batumi/lock/${command}`;
 	try {
 		const response = await fetch(url);
 		if (response.ok) {

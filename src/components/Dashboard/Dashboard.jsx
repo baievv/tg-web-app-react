@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Dashboard.css";
 import { message } from "antd";
-import {
-	requestLockStatus,getTest,
-	openLock,
-	closeLock,
-} from "../../utils/lock-server";
+import { requestLockStatus, getTest, openLock, closeLock } from "../../utils/lock-server";
 const date = Date.now();
 const clientId = "329721a18c01487ebe8c4f6ed920c4db";
 const lockId = "9166406";
@@ -15,21 +11,21 @@ const accessToken = "cfbfd3e45cb1b35077f41756b8a6f448";
 const Dashboard = () => {
 	const { id } = useParams();
 	const [messageApi, contextHolder] = message.useMessage();
-	const [lockResponse,setLockResponse]=useState(null);
+	const [lockResponse, setLockResponse] = useState(null);
 	const [checked, setChecked] = useState({
-		isOpen: true,
-		fileName: "closed",
-		status: "closed",
+		isOpen: null,
+		fileName: null,
+		status: null,
 	});
 
 	const onSwitch = async () => {
 		if (checked.isOpen === true) {
 			setChecked({ isOpen: false, fileName: "closed", status: "closed" });
-			let res=await getTest('switch');
+			let res = await getTest("switch");
 			setLockResponse(res.status);
 			messageApi.info("Lock is close", [1]);
 		} else {
-			let res=await getTest("switch");
+			let res = await getTest("switch");
 			setLockResponse(res.status);
 			setChecked({ isOpen: true, fileName: "opened", status: "open" });
 			messageApi.info("Lock is open", [1]);
@@ -37,7 +33,19 @@ const Dashboard = () => {
 	};
 
 	useEffect(() => {
-		console.log("Id =", id);
+		async function fetchData() {
+			let res = await getTest("status");
+			 setLockResponse(res);
+			console.log(res);
+			if ((res = "close")) {
+				setChecked({ isOpen: false, fileName: "closed", status: "closed" });
+			} else {
+				setChecked({ isOpen: true, fileName: "opened", status: "open" });
+			}
+		};
+		fetchData();
+		console.log(checked);
+		onSwitch();
 	}, []);
 
 	return (
@@ -77,18 +85,13 @@ const Dashboard = () => {
 								/>
 							</div>
 							<div className='item_title'>Door</div>
-							<div className='item_subtitle'>
-								Lock is {checked.status}
-							</div>
+							<div className='item_subtitle'>Lock is {checked.status}</div>
 						</div>
 					</div>
 					<div className='dashboard_items'>
 						<div className='dashboard_items_in'>
 							<div className='item_icon'>
-								<img
-									src='/img/dashboard/icons/thermometer_.png'
-									alt=''
-								/>
+								<img src='/img/dashboard/icons/thermometer_.png' alt='' />
 							</div>
 							<div className='item_title'>Temperature</div>
 							<div className='item_subtitle'>Inside</div>
@@ -97,10 +100,7 @@ const Dashboard = () => {
 					<div className='dashboard_items'>
 						<div className='dashboard_items_in'>
 							<div className='item_icon'>
-								<img
-									src='/img/dashboard/icons/television_.png'
-									alt=''
-								/>
+								<img src='/img/dashboard/icons/television_.png' alt='' />
 							</div>
 							<div className='item_title'>TV</div>
 							<div className='item_subtitle'>Off</div>
@@ -109,10 +109,7 @@ const Dashboard = () => {
 					<div className='dashboard_items'>
 						<div className='dashboard_items_in'>
 							<div className='item_icon'>
-								<img
-									src='/img/dashboard/icons/dimmer_.png'
-									alt=''
-								/>
+								<img src='/img/dashboard/icons/dimmer_.png' alt='' />
 							</div>
 							<div className='item_title'>Main light</div>
 							<div className='item_subtitle'>Off</div>
@@ -133,10 +130,7 @@ const Dashboard = () => {
 					<div className='dashboard_items'>
 						<div className='dashboard_items_in'>
 							<div className='item_icon'>
-								<img
-									src='/img/dashboard/icons/floor_lamp_.png'
-									alt=''
-								/>
+								<img src='/img/dashboard/icons/floor_lamp_.png' alt='' />
 							</div>
 							<div className='item_title'>Floor lamp</div>
 							<div className='item_subtitle'>Off</div>
@@ -145,7 +139,7 @@ const Dashboard = () => {
 				</div>
 				{/* ------------------------- */}
 				<div className='footer'>
-					Response is 
+					Lock is-
 					{lockResponse}
 				</div>
 			</div>
