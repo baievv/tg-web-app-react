@@ -65,13 +65,13 @@ async function openLock(clientId, accessToken, lockId, date) {
 			return error;
 		});
 }
-async function getTest(command){
-	const url = `http://49.13.63.34:5000/dashboard/batumi/lock/${command}`;
+async function getTest(command) {
+	const url = `https://yarociytech.com:5000/dashboard/batumi/lock/${command}`;
 	try {
 		const response = await fetch(url);
 		if (response.ok) {
 			const data = await response.json();
-			console.log("Data is -",data);
+			console.log("Data is -", data);
 			return data;
 		} else {
 			throw new Error("Request error");
@@ -117,4 +117,4 @@ async function closeLock(clientId, accessToken, lockId, date) {
 // openLock(clientId, accessToken, lockId, date);
 // closeLock(clientId, accessToken, lockId, date);
 
-export { requestLockStatus, openLock, closeLock ,getTest};
+export { requestLockStatus, openLock, closeLock, getTest };
