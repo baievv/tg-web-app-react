@@ -34,7 +34,7 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		async function fetchData() {
-			let res = await getTest("switch");
+			let res = await getTest("status");
 			 setLockResponse(res);
 			console.log(res);
 			if ((res = "close")) {
