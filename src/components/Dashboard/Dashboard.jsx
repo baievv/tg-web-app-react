@@ -2,20 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Dashboard.css";
 import { message } from "antd";
-import { requestLockStatus, getTest, openLock, closeLock } from "../../utils/lock-server";
-const date = Date.now();
-const clientId = "329721a18c01487ebe8c4f6ed920c4db";
-const lockId = "9166406";
-const accessToken = "cfbfd3e45cb1b35077f41756b8a6f448";
+import { getTest } from "../../utils/lock-server";
 
 const Dashboard = () => {
 	const { id } = useParams();
+	console.log("Param ID is -", id);
 	const [messageApi, contextHolder] = message.useMessage();
 	const [lockResponse, setLockResponse] = useState(null);
 	const [checked, setChecked] = useState({
-		isOpen: null,
-		fileName: null,
-		status: null,
+		isOpen: false,
+		fileName: "closed",
+		status: "closed",
 	});
 
 	const onSwitch = async () => {
@@ -32,20 +29,25 @@ const Dashboard = () => {
 		}
 	};
 
-	useEffect(() => {
-		async function fetchData() {
-			let res = await getTest("status");
-			 setLockResponse(res);
-			console.log(res);
-			if ((res = "close")) {
+	const fetchData = async () => {
+		return getTest("status").then((res) => {
+			setLockResponse(res);
+			if (res === "close") {
 				setChecked({ isOpen: false, fileName: "closed", status: "closed" });
 			} else {
 				setChecked({ isOpen: true, fileName: "opened", status: "open" });
 			}
-		};
-		fetchData();
-		console.log(checked);
-		onSwitch();
+			return res;
+		});
+	};
+
+	useEffect(() => {
+		fetchData().then((res) => {
+			console.log("Result of getStatus- ", res);
+			// Здесь вы можете делать что-то с res, который теперь содержит ответ
+			// console.log(checked);
+			// onSwitch();
+		});
 	}, []);
 
 	return (
@@ -138,10 +140,7 @@ const Dashboard = () => {
 					</div>
 				</div>
 				{/* ------------------------- */}
-				<div className='footer'>
-					Lock is-
-					{lockResponse}
-				</div>
+				{/* <div className='footer'>{lockResponse}</div> */}
 			</div>
 		</>
 	);
