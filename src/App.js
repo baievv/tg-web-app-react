@@ -12,14 +12,13 @@ function App() {
 
 	useEffect(() => {
 		tg.ready();
-		console.log(tg.viewportHeight, "- width -", tg.viewportWidth);
+		// console.log(tg.win);
 	}, []);
 
 	return (
 		<div className='App'>
 			<Routes>
 				<Route index element={<ProductList />} />
-				{/* <Route path={"form"} element={<Form />} /> */}
 				<Route path='/dashboard/:id' element={<Dashboard />} />
 			</Routes>
 		</div>
