@@ -1,12 +1,5 @@
-import axios from "axios";
-
-// const date = Date.now();
-// const clientId = "329721a18c01487ebe8c4f6ed920c4db";
-// const lockId = "9166406";
-// const accessToken = "cfbfd3e45cb1b35077f41756b8a6f448";
-
 async function getTest(command) {
-	const url = `https://yarociytech.com:5000/dashboard/batumi/lock/${command}`;
+	const url = `https://49.13.63.34:5000/dashboard/batumi/lock/${command}`;
 	console.log(url);
 	try {
 		const response = await fetch(url);
@@ -22,5 +15,18 @@ async function getTest(command) {
 	}
 }
 
-// export { requestLockStatus, openLock, closeLock, getTest };
-export { getTest };
+async function sendState(state){
+	const url = `https://49.13.63.34:5000/send/batumi/lock/${state}`;
+	console.log(url);
+	try {
+		const response = await fetch(url);
+		if (response.ok) {
+			return true;
+		} else {
+			throw new Error("Request error");
+		}
+	} catch (error) {
+		return error;
+	}
+}
+export { getTest,sendState };
