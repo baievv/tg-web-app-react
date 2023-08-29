@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Dashboard.css";
 import { message } from "antd";
-import { getTest } from "../../utils/lock-server";
+import { getTest, sendState } from "../../utils/lock-server";
 
 const Dashboard = () => {
 	const { id } = useParams();
@@ -32,7 +32,7 @@ const Dashboard = () => {
 	};
 
 	const sendData=async(state)=>{
-		return sendData(state).then((res) => {
+		return sendState(state).then((res) => {
 			return res;
 		});
 	}
