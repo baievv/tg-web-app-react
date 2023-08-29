@@ -6,9 +6,9 @@ import { getTest } from "../../utils/lock-server";
 
 const Dashboard = () => {
 	const { id } = useParams();
-	console.log("Param ID is -", id);
+	// console.log("Param ID is -", id);
 	const [messageApi, contextHolder] = message.useMessage();
-	const [lockResponse, setLockResponse] = useState(null);
+	// const [lockResponse, setLockResponse] = useState(null);
 	const [checked, setChecked] = useState({
 		isOpen: false,
 		fileName: "closed",
@@ -19,20 +19,27 @@ const Dashboard = () => {
 		if (checked.isOpen === true) {
 			setChecked({ isOpen: false, fileName: "closed", status: "closed" });
 			let res = await getTest("switch");
-			setLockResponse(res.status);
+			// setLockResponse(res.status);
 			messageApi.info("Lock is close", [1]);
+			await sendData('close');
 		} else {
 			let res = await getTest("switch");
-			setLockResponse(res.status);
+			// setLockResponse(res.status);
 			setChecked({ isOpen: true, fileName: "opened", status: "open" });
 			messageApi.info("Lock is open", [1]);
+			await sendData("open");
 		}
 	};
 
+	const sendData=async(state)=>{
+		return sendData(state).then((res) => {
+			return res;
+		});
+	}
 	const fetchData = async () => {
 		return getTest("status").then((res) => {
-			setLockResponse(res);
-			if (res === "close") {
+			// setLockResponse(res);
+			if (res === "closed") {
 				setChecked({ isOpen: false, fileName: "closed", status: "closed" });
 			} else {
 				setChecked({ isOpen: true, fileName: "opened", status: "open" });
@@ -44,9 +51,6 @@ const Dashboard = () => {
 	useEffect(() => {
 		fetchData().then((res) => {
 			console.log("Result of getStatus- ", res);
-			// Здесь вы можете делать что-то с res, который теперь содержит ответ
-			// console.log(checked);
-			// onSwitch();
 		});
 	}, []);
 
