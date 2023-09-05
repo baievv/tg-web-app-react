@@ -1,5 +1,5 @@
 async function getTest(command) {
-	const url = `https://49.13.63.34:5000/dashboard/batumi/lock/${command}`;
+	const url = `https://yarociytech.com:5000/dashboard/batumi/lock/${command}`;
 	console.log(url);
 	try {
 		const response = await fetch(url);
@@ -15,8 +15,8 @@ async function getTest(command) {
 	}
 }
 
-async function sendState(state){
-	const url = `https://49.13.63.34:5000/send/batumi/lock/${state}`;
+async function sendState(state) {
+	const url = `https://yarociytech.com:5000/send/batumi/lock/${state}`;
 	console.log(url);
 	try {
 		const response = await fetch(url);
@@ -29,4 +29,4 @@ async function sendState(state){
 		return error;
 	}
 }
-export { getTest,sendState };
+export { getTest, sendState };
